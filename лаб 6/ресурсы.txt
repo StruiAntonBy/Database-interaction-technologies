@@ -1,0 +1,9 @@
+1) https://www.cyberforum.ru/php-beginners/thread2147265.html
+2) https://www.php.net/manual
+3) https://webformyself.com/vvedenie-v-pdo/
+4) https://snipp.ru/php/manual-pdo#link-udalenie-iz-bd
+5) http://htmlbook.ru/html/input/checked
+6) http://htmlbook.ru/samhtml5/formy/pereklyuchateli
+7) http://htmlbook.ru/html/input/type
+8) https://postgrespro.ru/docs/postgresql/9.5/dml-update
+9) стр 120

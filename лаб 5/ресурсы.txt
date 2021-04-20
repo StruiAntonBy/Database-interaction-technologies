@@ -1,0 +1,7 @@
+1) стр 58
+2) https://yandex.by/turbo?text=https%3A%2F%2Fuspei.com%2Fhtml%2Fradioknopki-i-chekboksy-v-html-ih-tegi-i-atributy%2F
+3) http://htmlbook.ru/samhtml5/formy/pole-so-spiskom
+4) http://htmlbook.ru/samhtml5/formy/odnostrochnoe-tekstovoe-pole
+5) http://htmlbook.ru/samhtml5/formy/mnogostrochnyi-tekst
+6) https://metanit.com/web/php/3.1.php
+7) https://www.php.net/manual/ru/reserved.variables.server.php

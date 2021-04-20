@@ -1,0 +1,34 @@
+select * from users;
+select * from software_tester;
+select * from client;
+select * from contact_person;
+select * from "e-mail";
+select * from phone;
+select * from project;
+select * from requirement;
+select * from planed_test;
+select * from completed_test;
+---------------------task1--------------------------------
+select * from users where users.id=1;
+select * from software_tester where software_tester.id=10;
+select * from client where client.id=3;
+select * from contact_person where contact_person.id=2;
+select * from "e-mail" where "e-mail".id=5;
+select * from phone where phone.id=1;
+select * from project where project.id=2;
+select * from requirement where requirement.id=1;
+select * from planed_test where planed_test.id=4;
+select * from completed_test where completed_test.id=3;
+---------------------task2-------------------------------
+select * from "e-mail" where contact_person_id=2;
+select project.id, project.client_id, project.start_date, project.end_date,(select count(requirement) from requirement where project.id=requirement.project_id) as all_requirement, (select count(level_of_criticality_for_the_client) from requirement where project.id=requirement.project_id and requirement.level_of_criticality_for_the_client='низкий') as requirement_low, (select count(level_of_criticality_for_the_client) from requirement where project.id=requirement.project_id and requirement.level_of_criticality_for_the_client='средний') as requirement_middle, (select count(level_of_criticality_for_the_client) from requirement where project.id=requirement.project_id and requirement.level_of_criticality_for_the_client='высокий') as requirement_high, (select count(level_of_criticality_for_the_client) from requirement where project.id=requirement.project_id and requirement.level_of_criticality_for_the_client='высокий')::real / (select count(requirement) from requirement where project.id=requirement.project_id)::real as percent_high, (select count(level_of_criticality_for_the_client) from requirement where project.id=requirement.project_id and requirement.level_of_criticality_for_the_client='средний')::real / (select count(requirement) from requirement where project.id=requirement.project_id)::real as percent_middle, (select count(level_of_criticality_for_the_client) from requirement where project.id=requirement.project_id and requirement.level_of_criticality_for_the_client='низкий')::real / (select count(requirement) from requirement where project.id=requirement.project_id)::real as percent_low from project where project.client_id=2 and project.end_date IS NULL ORDER BY percent_high DESC, percent_middle DESC, percent_low DESC;
+select requirement.id, requirement.project_id, requirement.requirement, requirement.start_date, requirement.a_mark_of_completion from requirement, client, project where client.id=2 and project.client_id=client.id and project.id=requirement.project_id ORDER BY start_date;
+select * from planed_test where requirement_id=1 and level_test='глубокий' ORDER BY planned_time;
+select * from completed_test where planed_test_id=1 ORDER BY result DESC,start_date_and_time;
+---------------------task3------------------------------
+select contact_person.surname, contact_person.name, contact_person.middle_name, phone.number from contact_person INNER JOIN phone ON phone.contact_person_id=contact_person.id;
+select contact_person.surname, contact_person.name, contact_person.middle_name, "e-mail".login from contact_person INNER JOIN "e-mail" ON "e-mail".contact_person_id=contact_person.id;
+select software_tester.surname, software_tester.name, software_tester.middle_name, software_tester.work_experience from software_tester LEFT JOIN users ON users.id=software_tester.id;
+---------------------task4------------------------------
+select planed_test_id, count(*) as idcount from completed_test GROUP BY planed_test_id;
+select tester_id, sum(length) as sumlength from completed_test GROUP BY tester_id;
